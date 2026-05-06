@@ -27,11 +27,13 @@ public class Main{
                     System.out.println("Discurso 2: Malala, na Assembleia Geral da ONU, no “Dia Malala”, em 12 de julho de 2013");
                     break;
                 case 2:
-                    
+                    //cada discurso: total de palavras, total de palavras distintas,palavra mais frequente, quantidade de palavras que aparecem apenas uma vez.
                     break;
                 case 3:
+                    //cada discurso: total de palavras, total de palavras distintas,palavra mais frequente, quantidade de palavras que aparecem apenas uma vez.
                     break;
                 case 4:
+
                     break;
                 case 5:
                     break;
@@ -40,6 +42,8 @@ public class Main{
                 case 7:
                     break;
                 case 8:
+                    System.out.println("Over!");
+                    System.out.println("Integrandes: Laura Rocha Yaguiu, Stephanie Soares Dias");
                     break;
                 default:
                     break;
