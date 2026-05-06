@@ -4,7 +4,7 @@ public class Palavra{
 
     public Palavra(String palavra, int ocorrencias){
         this.palavra = palavra;
-        this.ocorrencias  =ocorrencias;
+        this.ocorrencias = ocorrencias;
     }
 
     public void lerArquivo(){
@@ -12,6 +12,7 @@ public class Palavra{
             FileReader arq = new FileReader("Discurso1.txt");
             BufferedReader linha = new BufferedReader(arq);
             FileReader arq2 = new FileReader("Discurso2.txt"); 
+            BufferedReader linha = new BufferedReader(arq2);
 
 
             int pos = 0; 
