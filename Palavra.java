@@ -14,6 +14,8 @@ public class Palavra{
             FileReader arq2 = new FileReader("Discurso2.txt"); 
             BufferedReader linha = new BufferedReader(arq2);
 
+            aux = linha.readLine();
+
 
             int pos = 0; 
 
