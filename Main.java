@@ -22,9 +22,11 @@ public class Main{
 
             switch (opcao){
                 case 1:
+                    ABB discurso1 = new ABB();
+                    ABB discurso2 = new ABB();
                     Discurso discurso = new Discurso();
-                    discurso.lerArquivo("Discurso1.txt");
-                    discurso.lerArquivo("Discurso2.txt");
+                    discurso.lerArquivo("Discurso1.txt",discurso1);
+                    discurso.lerArquivo("Discurso2.txt",discurso2);
                     System.out.println("Discursos carregados com sucesso");
                     System.out.println("Discurso 1: Coordenadora residente da ONU no Brasil, Silvia Rucks, na celebração global do Dia Internacional das Meninas nas TIC 2026, em 23 de abril");
                     System.out.println("Discurso 2: Malala, na Assembleia Geral da ONU, no “Dia Malala”, em 12 de julho de 2013");
