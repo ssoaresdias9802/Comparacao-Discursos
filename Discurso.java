@@ -12,12 +12,18 @@ public class Discurso{
 
             while ((linha = br.readLine()) != null) {
 
-                linha = linha.toLowerCase();
+                //linha = linha.toLowerCase();
                 String[] palavras = linha.split("\\s+");
                 
                 for (String palavra : palavras) {
-                    if (!palavra.isEmpty()) {arvore.inserir(palavra);}
+                    if (!palavra.isEmpty()) {
+                        arvore.inserir(palavra);
+                        /*
+                        Node novo = new Node(palavra);
+                        arvore.insere(novo);*/
+                    }
                 }
+                
             }
 
             br.close();
@@ -27,5 +33,27 @@ public class Discurso{
             e.printStackTrace();
         }
     }
+    /*public int totalPalavras(String nomeArquivo){
+        int cont = 0;
+        try {
+            FileReader arq = new FileReader(nomeArquivo);
+            BufferedReader br = new BufferedReader(arq);
+        
+            String linha;
+
+            while ((linha = br.readLine()) != null) {
+
+                String[] palavras = linha.split("\\s+");
+
+            
+                for (String palavra : palavras) {
+                    cont++;
+                }
+            } 
+        } catch (Exception e) {
+            System.out.println("Erro ao tentar somar palavras:" + e.getMessage());
+        }
+        return cont;
+    }*/
 }
 }
