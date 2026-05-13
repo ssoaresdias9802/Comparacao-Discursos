@@ -1,41 +1,48 @@
+import java.io.*;
+import java.util.*;
+
 public class Discurso{
-
-    public void lerArquivo(){
+    HashMap<String, Palavra> contador;
+    public Discurso(){
+        contador = new HashMap<>();
+    }
+    public void lerArquivo(String nomeArquivo) {
         try {
-            FileReader arq = new FileReader("Discurso1.txt");
-            BufferedReader linha1 = new BufferedReader(arq);
-            FileReader arq2 = new FileReader("Discurso2.txt"); 
-            BufferedReader linha2 = new BufferedReader(arq2);
+            BufferedReader br = new BufferedReader(new FileReader(nomeArquivo));
+            String linha;
 
-            aux1 = linha1.readLine();
-            aux2 = linha2.readLine();
+            while ((linha = br.readLine()) != null) {
+                linha = linha.toLowerCase();
+                String[] palavras = linha.split("\\s+");
+                for (String texto : palavras) {
 
+                    if (texto.isEmpty()) {
+                        continue;
+                    }
 
-            int pos = 0; 
+                    if (contador.containsKey(texto)) {
+                        contador.get(texto).aumentarOcorrencia();
 
-            while(aux1!= null && aux2 != null) {
-                // separa dentro de vetor sempre que encontra virgula
-                // em processo
-                String[] dados1 = aux1.split("\\s+");
-                String[] dados2 = aux2.split("\\s+");
+                    } else {
 
-                Node d1 = new Node(dados1[pos]); 
-                ABB1.add(d1);
-
-                Node d2 = new Node(dados2[pos]);
-                ABB2.add(d2);
-
-                pos++;
-                // proximo exame
-                aux1 = linha1.readLine();
-                aux2.linha2.readLine();
+                        Palavra nova = new Palavra(texto);
+                        contador.put(texto, nova);
+                    }
+                }
             }
-            arq.close();
-            arq2.close();
+
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        catch(Exception e) {
-            System.out.println("Erro na leitura do arquivo: " + e.getMessage());
+    }
+
+    public void mostrarContagem() {
+
+        for (String chave : contador.keySet()) {
+            Palavra p = contador.get(chave);
+            System.out.println(p);
         }
-        
     }
 }
