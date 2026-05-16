@@ -1,18 +1,31 @@
 public class Palavra {
 
-    String palavra;
-    int ocorrencias;
+    private String nome;
 
-    public Palavra(String palavra) {
-        this.palavra = palavra;
-        this.ocorrencias = 1;
+    private int ocorrencia;
+
+    public Palavra(String nome) {
+
+        this.nome = nome;
+
+        this.ocorrencia = 1;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getOcorrencia() {
+        return ocorrencia;
     }
 
     public void aumentarOcorrencia() {
-        ocorrencias++;
+        ocorrencia++;
     }
-
-    public String toString() {
-        return palavra + " = " + ocorrencias;
+    public String toString(){
+        return "-" + getNome();
     }
 }
+    /*Se ocorrer
+repetição de uma palavra no texto, deverá ser feita a contagem, a partir desta
+classe:  */

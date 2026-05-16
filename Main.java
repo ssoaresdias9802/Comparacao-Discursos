@@ -29,8 +29,8 @@ public class Main{
 
             switch (opcao){
                 case 1:
-                    discurso.lerArquivo("Discurso1.txt",discurso1);
-                    discurso.lerArquivo("Discurso2.txt",discurso2);
+                    discurso.lerArquivo("data/Discurso1.txt",discurso1);
+                    discurso.lerArquivo("data/Discurso2.txt",discurso2);
                     System.out.println("Discursos carregados com sucesso");
                     System.out.println("Discurso 1: Coordenadora residente da ONU no Brasil, Silvia Rucks, na celebração global do Dia Internacional das Meninas nas TIC 2026, em 23 de abril");
                     System.out.println("Discurso 2: Malala, na Assembleia Geral da ONU, no “Dia Malala”, em 12 de julho de 2013");
@@ -42,10 +42,10 @@ public class Main{
                         break;
                     }
                     System.out.println("--- Discurso 1 Estatíscicas ---");
-                    System.out.println("Total de palavras: " );
-                    System.out.println("Total de palavras distintas:");
-                    System.out.println("Palavra mais frequente");
-                    System.out.println("Quantidade de palavras que aparecem apenas uma vez:");
+                    System.out.println("Total de palavras: " + discurso1.contarPalavras());
+                    System.out.println("Total de palavras distintas: " + discurso1.totalDistintas(discurso1.getRoot()));
+                    System.out.println("Palavra mais frequente: " + discurso1.palavraMaisFrequente());
+                    System.out.println("Quantidade de palavras que aparecem apenas uma vez: " + discurso1.palavrasUnicas(discurso1.getRoot()));
                     System.out.println("-------------------------------");
                     //cada discurso: total de palavras, total de palavras distintas,palavra mais frequente, quantidade de palavras que aparecem apenas uma vez.
                     break;
@@ -55,10 +55,10 @@ public class Main{
                         break;
                     }
                     System.out.println("--- Discurso 2 Estatíscicas ---");
-                    System.out.println("Total de palavras: " );
-                    System.out.println("Total de palavras distintas:");
-                    System.out.println("Palavra mais frequente");
-                    System.out.println("Quantidade de palavras que aparecem apenas uma vez:");
+                    System.out.println("Total de palavras: " + discurso2.contarPalavras());
+                    System.out.println("Total de palavras distintas: " + discurso2.totalDistintas(discurso2.getRoot()));
+                    System.out.println("Palavra mais frequente: " + discurso2.palavraMaisFrequente());
+                    System.out.println("Quantidade de palavras que aparecem apenas uma vez: " + discurso2.palavrasUnicas(discurso2.getRoot()));
                     System.out.println("-------------------------------");
                     //cada discurso: total de palavras, total de palavras distintas,palavra mais frequente, quantidade de palavras que aparecem apenas uma vez.
                     break;

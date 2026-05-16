@@ -2,9 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Discurso{
-    public static void lerArquivo(
-            String nomeArquivo,
-            ABB arvore) {
+    public static void lerArquivo(String nomeArquivo, ABB arvore) {
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(nomeArquivo));
@@ -12,15 +10,12 @@ public class Discurso{
 
             while ((linha = br.readLine()) != null) {
 
-                //linha = linha.toLowerCase();
+                linha = linha.toLowerCase();
                 String[] palavras = linha.split("\\s+");
                 
                 for (String palavra : palavras) {
                     if (!palavra.isEmpty()) {
-                        arvore.inserir(palavra);
-                        /*
-                        Node novo = new Node(palavra);
-                        arvore.insere(novo);*/
+                        arvore.insere(palavra);
                     }
                 }
                 
@@ -29,8 +24,8 @@ public class Discurso{
             br.close();
 
         } catch (Exception e) {
-
-            e.printStackTrace();
+            System.out.println("Erro ao tentar ler o arquivo:" + e.getMessage());
+            //e.printStackTrace();
         }
     }
     /*public int totalPalavras(String nomeArquivo){
@@ -55,5 +50,4 @@ public class Discurso{
         }
         return cont;
     }*/
-}
 }
