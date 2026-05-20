@@ -1,5 +1,4 @@
 public class ABB {
-
     private Node root;
     private int quantidade;
     private Palavra maisFrequente;
@@ -203,7 +202,7 @@ public class ABB {
         return null;
     }
 
-    public Palavra buscaPalavra(String valor) {
+    public int buscaPalavra(String valor) {
 
         Node atual = root;
 
@@ -213,26 +212,25 @@ public class ABB {
 
             // encontrou
             if (valor.equals(valorAtual)) {
-
-                return atual.getElemento();
+                return atual.getPalavra().getOcorrencia();
+                
 
             }
 
             // esquerda
             else if (valor.compareTo(valorAtual) < 0) {
-
                 atual = atual.getLeft();
+               
 
             }
 
             // direita
-            else {
-
+            else{
                 atual = atual.getRight();
+               
             }
         }
-
-        return null;
+        return 0;
     }
 
     // **MÁXIMO**

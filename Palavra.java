@@ -1,5 +1,6 @@
 public class Palavra {
 
+    
     private String nome;
 
     private int ocorrencia;
@@ -9,6 +10,11 @@ public class Palavra {
         this.nome = nome;
 
         this.ocorrencia = 1;
+    }
+
+    public Palavra getPalavra(){
+        return this.palavra;
+
     }
 
     public String getNome() {

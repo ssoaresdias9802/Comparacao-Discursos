@@ -69,8 +69,23 @@ public class Main{
                     }
                     String palavraBusca;
                     System.out.println("Palavra para busca:");
+                    sc.nextLine();
                     palavraBusca = sc.nextLine();
-                    System.out.println("Discurso 1: " + discurso1.buscaPalavra(palavraBusca) );
+                    int frequenciaBusca1 = discurso1.buscaPalavra(palavraBusca);
+                    int frequenciaBusca2 = discurso2.buscaPalavra(palavraBusca);
+                    if (frequenciaBusca1 > 0 && frequenciaBusca2 > 0 ){
+                        System.out.println("Palavra encontrada no discurso 1: "+ frequenciaBusca1 + " vezes. Palavra encontrado no discurso 2: "+ frequenciaBusca2 + " vezes.");
+                    }
+                    else if(frequenciaBusca1 > 0){
+                        System.out.println("Palavra encontrada no discurso 1: "+ frequenciaBusca1 + " vezes.");
+                    }
+                    else if(frequenciaBusca2 > 0){
+                        System.out.println("Palavra encontrado no discurso 2: "+ frequenciaBusca2 + " vezes.");
+                    }
+                    else{
+                        System.out.println("Palavra não encontrada.");
+                    }
+                    //System.out.println("Discurso 1: " + discurso1.buscaPalavra(palavraBusca) );
                     /*
                     if (discurso1.buscaPalavra(palavraBusca) == null && discurso2.buscaPalavra(palavraBusca) == null) {
                         System.out.println("Palavra não encontrada nos discursos");
