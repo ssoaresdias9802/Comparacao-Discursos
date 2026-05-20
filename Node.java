@@ -63,6 +63,10 @@ public class Node {
         this.right = p;
     }
 
+    public Palavra getPalavra(){
+        return this.elemento;
+    }
+
     /*
      char elemento;
     Node pai;
