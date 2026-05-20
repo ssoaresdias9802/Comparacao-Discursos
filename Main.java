@@ -67,13 +67,33 @@ public class Main{
                         System.out.println("Necessário carregar discursos primeiro!");
                         break;
                     }
-
+                    String palavraBusca;
+                    System.out.println("Palavra para busca:");
+                    palavraBusca = sc.nextLine();
+                    System.out.println("Discurso 1: " + discurso1.buscaPalavra(palavraBusca) );
+                    /*
+                    if (discurso1.buscaPalavra(palavraBusca) == null && discurso2.buscaPalavra(palavraBusca) == null) {
+                        System.out.println("Palavra não encontrada nos discursos");
+                        break;
+                    } else if (discurso1.buscaPalavra(palavraBusca) == null) {
+                        
+                        break;
+                    } else if (discurso2.buscaPalavra(palavraBusca) == null) {
+                        //estatiscicas 1
+                        break;
+                    } else {
+                        //estatiscicas 1 e 2
+                    }*/
                     break;
                 case 5:
                     if(carregCase1 != true){
                         System.out.println("Necessário carregar discursos primeiro!");
                         break;
                     }
+                    System.out.println("--- Discurso 1 Ordem Alfabética ---");
+                    // mostrar ocorrências
+                    System.out.println("--- Discurso 2 Ordem Alfabética ---");
+                    // mostrar ocorrências
                     break;
                 case 6:
                     if(carregCase1 != true){

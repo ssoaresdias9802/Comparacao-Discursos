@@ -171,18 +171,50 @@ public class ABB {
     }
 
     // **BUSCA**
-    public Node busca(String valor) {
+    public Node buscaNode(String valor) {
 
         Node atual = root;
 
         while (atual != null) {
 
-            String valorAtual = (String) atual.getElemento().getNome();
+            String valorAtual = atual.getElemento().getNome();
 
             // encontrou
             if (valor.equals(valorAtual)) {
 
                 return atual;
+
+            }
+
+            // esquerda
+            else if (valor.compareTo(valorAtual) < 0) {
+
+                atual = atual.getLeft();
+
+            }
+
+            // direita
+            else {
+
+                atual = atual.getRight();
+            }
+        }
+
+        return null;
+    }
+
+    public Palavra buscaPalavra(String valor) {
+
+        Node atual = root;
+
+        while (atual != null) {
+
+            String valorAtual = atual.getElemento().getNome();
+
+            // encontrou
+            if (valor.equals(valorAtual)) {
+
+                return atual.getElemento();
 
             }
 
