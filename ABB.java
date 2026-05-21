@@ -78,6 +78,10 @@ public class ABB {
         executaPreOrdem(no.getRight());
     }
 
+    public void executaInOrdem() {
+       executaInOrdem(root);
+    }
+
     public void executaInOrdem(Node no) {
 
         if (no == null) {
@@ -86,7 +90,7 @@ public class ABB {
 
         executaInOrdem(no.getLeft());
 
-        System.out.print(no.getElemento() + " ");
+        System.out.print(" Palavra: " + no.getElemento().getNome() +" - " + no.getElemento().getOcorrencia() + "|");
 
         executaInOrdem(no.getRight());
     }
