@@ -110,10 +110,11 @@ public class Main{
                         System.out.println("Necessário carregar discursos primeiro!");
                         break;
                     }
+                    System.out.println(discurso1.exibirPalavrasComuns(discurso1, discurso2));
                     break;
                 case 8:
                     System.out.println("Over!");
-                    System.out.println("Integrandes: Laura Rocha Yaguiu, Stephanie Soares Dias");
+                    System.out.println("Integrantes: Laura Rocha Yaguiu, Stephanie Soares Dias");
                     break;
                 default:
                     break;

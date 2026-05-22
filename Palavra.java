@@ -25,7 +25,7 @@ public class Palavra {
         ocorrencia++;
     }
     public String toString(){
-        return "-" + getNome();
+        return  getNome();
     }
 }
     /*Se ocorrer

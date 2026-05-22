@@ -14,98 +14,10 @@ public class ABB {
         return root == null;
     }
 
-    // adiciona nó como raiz
-    public void addRoot(Node e) throws Exception {
-
-        if (root != null) {
-            throw new Exception("Árvore já tem raiz!");
-        }
-
-        root = e;
-    }
 
     // retorna raiz
     public Node getRoot() {
         return root;
-    }
-
-    // verifica se nó é raiz
-    public boolean isRoot(Node n) {
-        return n.getParent() == null;
-    }
-
-    // verifica se nó é interno
-    public boolean isInternal(Node n) {
-        return n.getLeft() != null || n.getRight() != null;
-    }
-
-    // verifica se nó é folha
-    public boolean isLeaf(Node n) {
-        return n.getLeft() == null && n.getRight() == null;
-    }
-
-    // retorna filho esquerdo
-    public Node left(Node e) {
-        return e.getLeft();
-    }
-
-    // verifica se tem filho esquerdo
-    public boolean hasLeft(Node e) {
-        return e.getLeft() != null;
-    }
-
-    // retorna filho direito
-    public Node right(Node e) {
-        return e.getRight();
-    }
-
-    // verifica se tem filho direito
-    public boolean hasRight(Node e) {
-        return e.getRight() != null;
-    }
-    
-    // **PERCURSOS**
-    public void executaPreOrdem(Node no) {
-
-        if (no == null) {
-            return;
-        }
-
-        System.out.print(no.getElemento() + " ");
-
-        executaPreOrdem(no.getLeft());
-
-        executaPreOrdem(no.getRight());
-    }
-
-    public void executaInOrdem() {
-       executaInOrdem(root);
-    }
-
-    public void executaInOrdem(Node no) {
-
-        if (no == null) {
-            return;
-        }
-
-        executaInOrdem(no.getLeft());
-
-        System.out.print(" Palavra: " + no.getElemento().getNome() +" - " + no.getElemento().getOcorrencia() + "|");
-
-        executaInOrdem(no.getRight());
-    }
-
-    public void executaPosOrdem(Node no) {
-
-        if (no == null) {
-            return;
-        }
-
-        executaPosOrdem(no.getLeft());
-
-        executaPosOrdem(no.getRight());
-
-        System.out.print(no.getElemento() + " ");
     }
 
     // **INSERÇÃO**
@@ -206,7 +118,17 @@ public class ABB {
 
         String resultadoMetodo = "";
 
-        resultadoMetodo += "Discurso 1: "+ distintas1+ " palavras distintas\n";
+        if(UM.contarPalavras() > DOIS.contarPalavras()){
+            resultadoMetodo += "O discurso 1 é o mais longo com "+ UM.contarPalavras()+ " palavras.";
+        }
+        else if(UM.contarPalavras() < DOIS.contarPalavras()){
+            resultadoMetodo += "O discurso 2 é o mais longo com "+ DOIS.contarPalavras()+ " palavras.";
+        }
+        else{
+            resultadoMetodo = "Os dois discursos têm a mesma quantidade de palavras: "+ DOIS.contarPalavras();
+        }
+
+        resultadoMetodo += "\nDiscurso 1: "+ distintas1+ " palavras distintas\n";
         resultadoMetodo += "Discurso 2: "+ distintas2+ " palavras distintas\n";
         resultadoMetodo += "Palavras comuns: "+ palavrasComuns + "\n";
         resultadoMetodo += "Percentual comum em relação ao Discurso 1: "+ String.format("%.2f", percentual1)+ "%\n";
@@ -215,39 +137,31 @@ public class ABB {
         return resultadoMetodo;
     }
 
-
-    // **BUSCA**
-    public Node buscaNode(String valor) {
-
-        Node atual = root;
-
-        while (atual != null) {
-
-            String valorAtual = atual.getElemento().getNome();
-
-            // encontrou
-            if (valor.equals(valorAtual)) {
-
-                return atual;
-
+    public String palavrasComuns(Node atual, ABB dois){
+        String resultado = "";
+        if(atual != null){
+            resultado += palavrasComuns(atual.left, dois);
+            int freq2 = dois.buscaPalavra(atual.getPalavra().getNome());
+            if(freq2 > 0){
+                resultado += atual.getPalavra().getNome()+ " - Discurso 1: "+ atual.getPalavra().getOcorrencia() + " | Discurso 2: "+ freq2 + "\n";
             }
-
-            // esquerda
-            else if (valor.compareTo(valorAtual) < 0) {
-
-                atual = atual.getLeft();
-
-            }
-
-            // direita
-            else {
-
-                atual = atual.getRight();
-            }
+            resultado += palavrasComuns(atual.right, dois);
         }
 
-        return null;
+        return resultado;
+}
+
+    public String exibirPalavrasComuns(ABB UM, ABB DOIS){
+        String resultado = "";
+        resultado += "\n\nPalavras em comum:\n";
+        resultado += palavrasComuns(UM.getRoot(), DOIS);
+        return resultado;
+
     }
+
+
+    // **BUSCA**
+
 
     public int buscaPalavra(String valor) {
 
@@ -280,30 +194,7 @@ public class ABB {
         return 0;
     }
 
-    // **MÁXIMO**
-    public Node maximo(Node x) {
 
-        while (x.getRight() != null) {
-
-            x = x.getRight();
-        }
-
-        return x;
-    }
-
-    // **MÍNIMO**
-    public Node minimo(Node x) {
-
-        while (x.getLeft() != null) {
-
-            x = x.getLeft();
-        }
-
-        return x;
-    }
-
-    
-   
     public int totalDistintas(Node no) {
         if (no == null) {
             return 0;
@@ -357,55 +248,7 @@ public class ABB {
                 + palavrasUnicas(no.getRight());
     }
 
-    /*private Node raiz;
-
-    // INSERIR
-    public void inserir(String texto) {
-
-        raiz = inserirRec(raiz, texto);
-    }
-
-    private Node inserirRec(Node atual, String texto) {
-
-        // cria novo nó
-        if (atual == null) {
-
-            return new Node(new Palavra(texto));
-        }
-
-        int comparacao =
-                texto.compareTo(atual.palavra.texto);
-
-        // esquerda
-        if (comparacao < 0) {
-
-            atual.esquerda =
-                    inserirRec(atual.esquerda, texto);
-        }
-
-        // direita
-        else if (comparacao > 0) {
-
-            atual.direita =
-                    inserirRec(atual.direita, texto);
-        }
-
-        // palavra já existe
-        else {
-
-            atual.palavra.aumentarOcorrencia();
-        }
-
-        return atual;
-    }
-
-    // BUSCAR
-    public Palavra buscar(String texto) {
-
-        return buscarRec(raiz, texto);
-    }*/
-
-
+    
     // EM ORDEM
     public void emOrdem_Alfabetica() {
         emOrdemRec(root);
