@@ -1,9 +1,9 @@
 public class Node {
     private Palavra elemento;
 
-    private Node left;
-    private Node right;
-    private Node parent;
+    public Node left;
+    public Node right;
+    public Node parent;
 
     // construtor
     public Node(Palavra elemento) {

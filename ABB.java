@@ -173,6 +173,49 @@ public class ABB {
         return quantidade;
     }
 
+
+    public int quantidadePalavrasComuns(Node atual, ABB dois){
+
+    int quantidade = 0;
+
+    if(atual != null){
+
+        quantidade += quantidadePalavrasComuns(atual.left, dois);
+
+        if(dois.buscaPalavra(atual.getPalavra().getNome()) > 0){
+            quantidade++;
+        }
+
+        quantidade += quantidadePalavrasComuns(atual.right, dois);
+    }
+
+    return quantidade;
+}
+
+
+    public String compararDiscursos(ABB UM, ABB DOIS){
+
+        int distintas1 = UM.totalDistintas(UM.getRoot());
+        int distintas2 = DOIS.totalDistintas(DOIS.getRoot());
+        int palavrasComuns = quantidadePalavrasComuns(UM.getRoot(), DOIS);
+        int totalSemRepeticao = distintas1 + distintas2 - palavrasComuns;
+
+        double percentual1 = ((double) palavrasComuns / distintas1) * 100;
+        double percentual2 = ((double) palavrasComuns / distintas2) * 100;
+        double semelhancaLexical = ((double) palavrasComuns / totalSemRepeticao) * 100;
+
+        String resultadoMetodo = "";
+
+        resultadoMetodo += "Discurso 1: "+ distintas1+ " palavras distintas\n";
+        resultadoMetodo += "Discurso 2: "+ distintas2+ " palavras distintas\n";
+        resultadoMetodo += "Palavras comuns: "+ palavrasComuns + "\n";
+        resultadoMetodo += "Percentual comum em relação ao Discurso 1: "+ String.format("%.2f", percentual1)+ "%\n";
+        resultadoMetodo += "Percentual comum em relação ao Discurso 2: " + String.format("%.2f", percentual2) + "%\n";
+        resultadoMetodo += "Semelhança lexical geral: " + String.format("%.2f", semelhancaLexical)+ "%";
+        return resultadoMetodo;
+    }
+
+
     // **BUSCA**
     public Node buscaNode(String valor) {
 
@@ -259,90 +302,7 @@ public class ABB {
         return x;
     }
 
-    // **REMOÇÃO**
-    public void delete(Node tree, String valor) {
-
-        Node min;
-
-        if (tree == null) {
-
-            return;
-
-        }
-
-        String valorAtual = (String) tree.getElemento().getNome();
-
-        // busca esquerda
-        if (valor.compareTo(valorAtual) < 0) {
-
-            delete(tree.getLeft(), valor);
-
-        }
-
-        // busca direita
-        else if (valor.compareTo(valorAtual) > 0) {
-
-            delete(tree.getRight(), valor);
-
-        }
-
-        // encontrou nó
-        else {
-
-            // caso: dois filhos
-            if (tree.getLeft() != null && tree.getRight() != null) {
-
-                min = minimo(tree.getRight());
-
-                tree.setElemento(min.getElemento());
-
-                delete(tree.getRight(), (String) min.getElemento().getNome());
-            }
-
-            // um filho ou nenhum
-            else {
-
-                Node filho;
-
-                if (tree.getLeft() != null) {
-
-                    filho = tree.getLeft();
-
-                } else {
-
-                    filho = tree.getRight();
-                }
-
-                // removendo raiz
-                if (tree.getParent() == null) {
-
-                    root = filho;
-
-                    if (filho != null) {
-
-                        filho.setParent(null);
-                    }
-                }
-
-                else {
-
-                    if (tree == tree.getParent().getLeft()) {
-
-                        tree.getParent().setLeft(filho);
-
-                    } else {
-
-                        tree.getParent().setRight(filho);
-                    }
-
-                    if (filho != null) {
-
-                        filho.setParent(tree.getParent());
-                    }
-                }
-            }
-        }
-    }
+    
    
     public int totalDistintas(Node no) {
         if (no == null) {
@@ -443,24 +403,23 @@ public class ABB {
     public Palavra buscar(String texto) {
 
         return buscarRec(raiz, texto);
-    }
+    }*/
 
 
     // EM ORDEM
-    public void emOrdem() {
-
-        emOrdemRec(raiz);
+    public void emOrdem_Alfabetica() {
+        emOrdemRec(root);
     }
 
     private void emOrdemRec(Node atual) {
 
         if (atual != null) {
 
-            emOrdemRec(atual.esquerda);
+            emOrdemRec(atual.left);
 
-            System.out.println(atual.palavra);
+            System.out.println(atual.getPalavra()+ " : " + atual.getPalavra().getOcorrencia());
 
-            emOrdemRec(atual.direita);
+            emOrdemRec(atual.right);
         }
-    }*/
+    }
 }

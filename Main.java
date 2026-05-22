@@ -93,16 +93,17 @@ public class Main{
                         break;
                     }
                     System.out.println("--- Discurso 1 Ordem Alfabética ---");
-                    discurso1.executaInOrdem();
+                    discurso1.emOrdem_Alfabetica();
                     System.out.println("");
                     System.out.println("--- Discurso 2 Ordem Alfabética ---");
-                    discurso2.executaInOrdem();
+                    discurso2.emOrdem_Alfabetica();
                     break;
                 case 6:
                     if(carregCase1 != true){
                         System.out.println("Necessário carregar discursos primeiro!");
                         break;
                     }
+                    System.out.println(discurso1.compararDiscursos(discurso1, discurso2));
                     break;
                 case 7:
                     if(carregCase1 != true){
